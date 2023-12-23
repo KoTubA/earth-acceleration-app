@@ -4,7 +4,7 @@ import DecorationLineWithDot from 'src/components/molecules/DecorationLineWithDo
 
 const Overview = () => {
   return (
-    <section className="flex justify-center bg-gray-100 w-full">
+    <section className="flex justify-center bg-gray-100 w-full" id="overview">
       <div className="flex flex-col items-center md:items-start lg:px-14 xl:px-20 py-16 px-7 max-w-screen-xl w-full">
         <SectionTitle title="How it works" />
         <div className="flex flex-col py-5 md:flex-row md:pt-4">
