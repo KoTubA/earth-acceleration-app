@@ -9,6 +9,12 @@ const Navigation = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleClick = () => {
+    if (window.innerWidth < 768) {
+      toggleMobileMenu();
+    }
+  };
+
   return (
     <div className="flex justify-center w-full">
       <div
@@ -31,28 +37,28 @@ const Navigation = () => {
           <Link
             to="overview"
             className="mx-3 lg:mx-4 cursor-pointer hover:text-sky-600"
-            onClick={toggleMobileMenu}
+            onClick={handleClick}
           >
             Overview
           </Link>
           <Link
             to="theory"
             className="mx-3 lg:mx-4 cursor-pointer hover:text-sky-600"
-            onClick={toggleMobileMenu}
+            onClick={handleClick}
           >
             Theory
           </Link>
           <Link
             to="animation"
             className="mx-3 lg:mx-4 cursor-pointer hover:text-sky-600"
-            onClick={toggleMobileMenu}
+            onClick={handleClick}
           >
             Animation
           </Link>
           <Link
             to="reports"
             className="mx-3 lg:mx-4 cursor-pointer hover:text-sky-600"
-            onClick={toggleMobileMenu}
+            onClick={handleClick}
           >
             Reports
           </Link>
