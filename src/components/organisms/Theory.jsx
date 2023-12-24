@@ -10,7 +10,7 @@ const Theory = () => {
           title="Teoria"
           subtitle="Zapoznaj się z poniższą informacją w celu wykonania eksperymentu."
         />
-        <div className="flex flex-col md:flex-row mb-9">
+        <div className="flex flex-col md:flex-row mb-12">
           <div className="w-full mb-6 md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <img
               className="w-full border border-stone-200 mb-1"
@@ -37,7 +37,7 @@ const Theory = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row mb-9">
+        <div className="flex flex-col-reverse md:flex-row mb-12">
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <h4 className="text-lg bold font-medium pb-2">
               Siła grawitacyjna i ciężar:
@@ -72,7 +72,7 @@ const Theory = () => {
           </div>
           <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12"></div>
         </div>
-        <div className="flex flex-col md:flex-row mb-9">
+        <div className="flex flex-col md:flex-row mb-12">
           <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12"></div>
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
             <h4 className="text-lg bold font-medium pb-2">
@@ -88,7 +88,7 @@ const Theory = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row mb-9">
+        <div className="flex flex-col-reverse md:flex-row mb-12">
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <h4 className="text-lg bold font-medium pb-2">
               Wahadło matematyczne – wyprowadzenie wzoru na okres drgań:
@@ -134,7 +134,7 @@ const Theory = () => {
           </div>
           <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12"></div>
         </div>
-        <div className="flex flex-col md:flex-row mb-9">
+        <div className="flex flex-col md:flex-row mb-12">
           <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12"></div>
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
             <h4 className="text-lg bold font-medium pb-2">
@@ -174,7 +174,7 @@ const Theory = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row mb-9">
+        <div className="flex flex-col-reverse md:flex-row mb-12">
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <h4 className="text-lg bold font-medium pb-2">
               Prawo izochronizmu:
