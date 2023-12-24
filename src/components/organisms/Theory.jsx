@@ -17,7 +17,7 @@ const Theory = () => {
               src={Asset}
               alt="Suwmiarka"
             />
-            <span className="text-xs italic text-stone-400">
+            <span className="text-xs italic text-stone-400 break-all">
               https://www.edukator.pl/tik_edukator_2/Reading%20A%20Caliper.html
             </span>
           </div>
