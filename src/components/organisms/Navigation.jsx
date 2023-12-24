@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-scroll';
-import Menu from 'src/assets/menu.svg?react';
+import Menu from 'src/assets/icons/menu.svg?react';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ const Navigation = () => {
           isMobileMenuOpen ? '' : 'hidden'
         }`}
       ></div>
-      <div className="flex justify-between items-center px-7 h-16 md:h-20 lg:px-14 xl:px-20 max-w-screen-xl w-full bg-white z-20">
+      <div className="flex justify-between items-center px-7 h-20 lg:px-14 xl:px-20 max-w-screen-xl w-full bg-white z-20">
         <header className="text-2xl font-bold font-display">
           Physics Laboratory
         </header>
