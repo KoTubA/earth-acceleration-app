@@ -55,7 +55,7 @@ const Results = () => {
             </div>
           </div>
           <div className="col-span-full md:col-start-2 md:row-start-2 md:col-span-1">
-            <span className="block mb-1 text-sm font-medium text-gray-900 font-display">
+            <span className="block mb-1 text-sm font-medium font-display">
               Tabela wyników:
             </span>
             <PeriodDataOutput title="Dla ilości okresów n = 20" />

@@ -5,16 +5,16 @@ const InputField = ({ label, type, id, value, locked }) => {
     <div>
       <label
         htmlFor={id}
-        className="block mb-1 text-sm font-medium text-gray-900 font-display"
+        className="block mb-1 text-sm font-medium font-display"
       >
         {label}
       </label>
       <input
         type={type}
         id={id}
-        className={
-          'text-gray-900 text-sm border border-gray-300 focus:outline-none focus:border-sky-500 w-full p-2.5'
-        }
+        className={`text-sm border border-gray-300 ${
+          locked ? 'bg-gray-100' : ''
+        } focus:outline-none focus:border-sky-500 w-full p-2.5`}
         value={value}
         disabled={locked}
         required

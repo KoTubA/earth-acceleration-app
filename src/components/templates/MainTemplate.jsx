@@ -9,7 +9,7 @@ import Conclusion from 'src/components/organisms/Conclusion';
 
 const MainTemplate = () => {
   return (
-    <>
+    <div className="text-neutral-900">
       <Navigation />
       <Home />
       <Overview />
@@ -18,7 +18,7 @@ const MainTemplate = () => {
       <Results />
       <Conclusion />
       <Footer />
-    </>
+    </div>
   );
 };
 

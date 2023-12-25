@@ -6,24 +6,27 @@ const Overview = () => {
   return (
     <section className="flex justify-center bg-gray-100 w-full" id="overview">
       <div className="flex flex-col items-center md:items-start lg:px-14 xl:px-20 py-16 px-7 max-w-screen-xl w-full">
-        <SectionTitle title="How it works" />
+        <SectionTitle title="Wprowadzenie" />
         <div className="flex flex-col py-5 md:flex-row md:pt-4">
           <DecorationLineWithDot>
-            <Step title="1" />
-            <p className="text-lg font-display text-center max-w-xs md:text-start">
-              This is the calculated result for Measurement 1.
+            <Step number="1" title="Krótki wstęp" />
+            <p className="leading-7 font-display text-center max-w-xs md:text-start text-neutral-600">
+              Krótka prezentacja teoretyczna i animacja ułatwiają zrozumienie
+              podstawowych właściwości fizycznych.
             </p>
           </DecorationLineWithDot>
           <DecorationLineWithDot>
-            <Step title="2" />
-            <p className="text-lg font-display text-center max-w-xs md:text-start md:pb-0 md:pr-5">
-              This is the calculated result for Measurement 2.
+            <Step number="2" title="Wprowadzanie danych" />
+            <p className="leading-7 font-display text-center max-w-xs md:text-start md:pb-0 md:pr-5 text-neutral-600">
+              Formularz do wprowadzania wyników eksperymentu i formułowania
+              wniosków na podstawie danych.
             </p>
           </DecorationLineWithDot>
           <DecorationLineWithDot isLastChild>
-            <Step title="3" />
-            <p className="text-lg font-display text-center max-w-xs md:text-start md:pb-0">
-              This is the calculated result for Measurement 3.
+            <Step number="3" title="Eksport sprawozdań" />
+            <p className="leading-7 font-display text-center max-w-xs md:text-start md:pb-0 text-neutral-600">
+              Eksport sprawozdań do pliku PDF, ułatwia udostępnianie i
+              przechowywanie wyników oraz wniosków z eksperymentu.
             </p>
           </DecorationLineWithDot>
         </div>
