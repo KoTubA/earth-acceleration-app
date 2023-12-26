@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const DecorationLineWithDot = ({ children, isLastChild }) => {
-  console.log(isLastChild);
   return (
     <div
       className={`${

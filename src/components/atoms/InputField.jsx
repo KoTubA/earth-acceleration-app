@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const InputField = ({ label, type, id, value, locked }) => {
+const InputField = ({ label, type, id, name, value, onChange }) => {
   return (
     <div>
       <label
@@ -12,11 +12,10 @@ const InputField = ({ label, type, id, value, locked }) => {
       <input
         type={type}
         id={id}
-        className={`text-sm border border-gray-300 ${
-          locked ? 'bg-gray-100' : ''
-        } focus:outline-none focus:border-sky-500 w-full p-2.5`}
+        name={name}
+        className="text-sm border border-gray-300 focus:outline-none focus:border-sky-500 w-full p-2.5"
         value={value}
-        disabled={locked}
+        onChange={onChange}
         required
       />
     </div>
@@ -27,8 +26,9 @@ InputField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  locked: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default InputField;
