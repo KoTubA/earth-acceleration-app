@@ -38,7 +38,7 @@ const Results = () => {
           <span className="block mb-1 text-sm font-medium text-gray-900 font-display">
             Tabela wyników:
           </span>
-          <div className="flex w-full gap-4 overflow-x-scroll md:flex-wrap md:overflow-x-auto pb-2">
+          <div className="flex w-full gap-4 overflow-x-auto lg:flex-wrap pb-2">
             {resultState.history.length > 0 ? (
               resultState.history.map((result, index) => (
                 <ResultCard
@@ -55,8 +55,8 @@ const Results = () => {
             )}
           </div>
         </div>
-        <form className="grid grid-cols-2 gap-6 md:gap-4 lg:gap-x-12 xl:gap-x-24 w-full">
-          <div className="col-span-full md:col-start-1 md:row-start-1 md:col-span-1">
+        <form className="grid grid-cols-2 gap-6 lg:gap-4 lg:gap-x-12 xl:gap-x-24 w-full">
+          <div className="col-span-full lg:col-start-1 lg:row-start-1 lg:col-span-1">
             <SectionTitle title="Dane wejściowe" isSmall />
             <div className="grid gap-4">
               <InputField
@@ -77,16 +77,16 @@ const Results = () => {
               />
             </div>
           </div>
-          <div className="col-span-full md:col-start-1 md:row-start-2 md:col-span-1">
+          <div className="col-span-full lg:col-start-1 lg:row-start-2 lg:col-span-1">
             <span className="block mb-1 text-sm font-medium text-gray-900 font-display">
               Czas t[s] n drgań:
             </span>
             {periods.map((n) => (
-              <div key={n} className="mb-6 md:mb-4 border border-gray-200">
+              <div key={n} className="mb-6 lg:mb-4 border border-gray-200">
                 <h4 className="text-center text-white bg-sky-950 font-display pt-2 pb-2">
                   Dla ilości okresów n = {n}
                 </h4>
-                <div className="grid grid-cols-3 gap-4 p-2">
+                <div className="grid md:grid-cols-3 gap-4 p-2">
                   {inputFields.map(({ label, id }) => (
                     <InputField
                       key={`${id}-${n}`}
@@ -102,7 +102,7 @@ const Results = () => {
               </div>
             ))}
           </div>
-          <div className="col-span-full md:col-start-2 md:row-start-1 md:col-span-1">
+          <div className="col-span-full lg:col-start-2 lg:row-start-1 lg:col-span-1">
             <SectionTitle title="Dane wyjściowe" isSmall />
             <div>
               <label
@@ -120,7 +120,7 @@ const Results = () => {
               />
             </div>
           </div>
-          <div className="col-span-full md:col-start-2 md:row-start-2 md:col-span-1">
+          <div className="col-span-full lg:col-start-2 lg:row-start-2 lg:col-span-1">
             <span className="block mb-1 text-sm font-medium font-display">
               Tabela wyników:
             </span>

@@ -70,6 +70,11 @@ const initialResult = {
 // Reducer for handling result calculations and saving
 const resultReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_CONCLUSIONS_VALUE':
+      return {
+        ...state,
+        conclusions: action.value,
+      };
     case 'CALCULATE_RESULT':
       console.log('Updated result');
       return {
@@ -89,8 +94,18 @@ const resultReducer = (state, action) => {
     case 'SAVE_RESULT':
       console.log('Result saved');
       return {
+        conclusions: state.conclusions,
         currentResult: initialResult,
         history: [...state.history, state.currentResult],
+      };
+
+    case 'EXPORT_TO_PDF':
+      console.log('Export to PDF clicked!');
+      // TODO: Add logic for exporting to PDF or any other action you desire
+      return {
+        currentResult: initialResult,
+        history: [],
+        conclusions: '',
       };
 
     default:
@@ -106,6 +121,8 @@ export const RaportContext = React.createContext({
   handleCalculateResult: () => {},
   handleSaveResult: () => {},
   handleDeleteResult: () => {},
+  handleConclusionsChange: () => {},
+  handleExportToPDF: () => {},
 });
 
 const RaportProvider = ({ children }) => {
@@ -113,6 +130,7 @@ const RaportProvider = ({ children }) => {
   const [resultState, dispatchResult] = useReducer(resultReducer, {
     currentResult: initialResult,
     history: [],
+    conclusions: '',
   });
 
   // Event handler for input value changes
@@ -334,6 +352,26 @@ const RaportProvider = ({ children }) => {
     dispatchResult({ type: 'UPDATE_RESULT', index });
   };
 
+  // Event handler for changing the 'conclusions' field
+  const handleConclusionsChange = (e) => {
+    dispatchResult({ type: 'SET_CONCLUSIONS_VALUE', value: e.target.value });
+  };
+
+  // Event handler for exporting to PDF
+  const handleExportToPDF = () => {
+    // Check if there is at least one element in history and conclusions is not empty
+    if (
+      resultState.history.length > 0 &&
+      resultState.conclusions.trim() !== ''
+    ) {
+      dispatchResult({ type: 'EXPORT_TO_PDF' });
+    } else {
+      console.log(
+        'Cannot export to PDF. Ensure there is at least one element in history and conclusions are not empty.',
+      );
+    }
+  };
+
   return (
     <RaportContext.Provider
       value={{
@@ -344,6 +382,8 @@ const RaportProvider = ({ children }) => {
         handleCalculateResult,
         handleSaveResult,
         handleDeleteResult,
+        handleConclusionsChange,
+        handleExportToPDF,
       }}
     >
       {children}

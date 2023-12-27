@@ -8,7 +8,7 @@ const PeriodDataOutput = ({ title, result }) => {
       <h4 className="text-center text-white bg-sky-950 font-display pt-2 pb-2">
         {title}
       </h4>
-      <div className="grid grid-cols-3">
+      <div className="grid md:grid-cols-3">
         {Object.keys(result).map((key, index, array) => (
           <div
             key={index}
@@ -16,7 +16,7 @@ const PeriodDataOutput = ({ title, result }) => {
           >
             <div
               className={`col-span-full bg-gray-200 p-1 border-b border-sky-950${
-                index === array.length - 1 ? '' : ' border-r'
+                index === array.length - 1 ? '' : ' md:border-r'
               }`}
             >
               {resultFields[index]}
@@ -26,14 +26,14 @@ const PeriodDataOutput = ({ title, result }) => {
             </div>
             <div
               className={`col-span-1 p-1 border-sky-950 border-b ${
-                index === array.length - 1 ? '' : ' border-r'
+                index === array.length - 1 ? '' : ' md:border-r'
               }`}
             >
               g
             </div>
             <div
               className={
-                'col-span-1 bg-gray-200 p-1 font-normal border-sky-950 border-r'
+                'col-span-1 bg-gray-200 p-1 font-normal border-sky-950 border-r border-b md:border-b-0'
               }
             >
               <span title={result[key].T} className="truncate">
@@ -43,8 +43,8 @@ const PeriodDataOutput = ({ title, result }) => {
               </span>
             </div>
             <div
-              className={`col-span-1 bg-gray-200 p-1 font-normal border-sky-950${
-                index === array.length - 1 ? '' : ' border-r'
+              className={`col-span-1 bg-gray-200 p-1 font-normal border-sky-950 border-b md:border-b-0${
+                index === array.length - 1 ? '' : ' md:border-r'
               }`}
             >
               <span title={result[key].g} className="truncate">
