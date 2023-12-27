@@ -36,14 +36,22 @@ const PeriodDataOutput = ({ title, result }) => {
                 'col-span-1 bg-gray-200 p-1 font-normal border-sky-950 border-r'
               }
             >
-              {result[key].T}
+              <span title={result[key].T} className="truncate">
+                {isNaN(parseFloat(result[key].T))
+                  ? result[key].T
+                  : parseFloat(result[key].T).toFixed(5)}
+              </span>
             </div>
             <div
               className={`col-span-1 bg-gray-200 p-1 font-normal border-sky-950${
                 index === array.length - 1 ? '' : ' border-r'
               }`}
             >
-              {result[key].g}
+              <span title={result[key].g} className="truncate">
+                {isNaN(parseFloat(result[key].g))
+                  ? result[key].T
+                  : parseFloat(result[key].g).toFixed(5)}
+              </span>
             </div>
           </div>
         ))}
