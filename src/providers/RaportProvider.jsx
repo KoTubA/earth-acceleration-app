@@ -1,9 +1,15 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
+import { saveAs } from 'file-saver';
+import { pdf } from '@react-pdf/renderer';
+import PDFTemplate from 'src/components/templates/PDFTemplate';
 
-// Function to calculate the acceleration due to gravity (g)
-const calculateGravity = (lengthLResult, period) =>
-  (4 * Math.PI ** 2 * lengthLResult) / period ** 2;
+// Function to calculate gravitational acceleration (g) and period (T)
+const calculateTAndG = (inputValue, n, lengthLResult) => {
+  const T = parseFloat(inputValue) / n;
+  const g = (4 * Math.PI ** 2 * lengthLResult) / T ** 2;
+  return { T, g };
+};
 
 // Function to calculate the length of the pendulum with a ball (l0)
 const calculateLengthWithBall = (length, diameter) => length + diameter / 2;
@@ -101,7 +107,6 @@ const resultReducer = (state, action) => {
 
     case 'EXPORT_TO_PDF':
       console.log('Export to PDF clicked!');
-      // TODO: Add logic for exporting to PDF or any other action you desire
       return {
         currentResult: initialResult,
         history: [],
@@ -152,6 +157,10 @@ const RaportProvider = ({ children }) => {
     });
   };
 
+  // Configurations for periods and sizes
+  const periodsConfig = [20, 30, 50];
+  const sizes = ['small', 'medium', 'large'];
+
   const handleCalculateResult = () => {
     // Check if any of the input values is empty
     const isAnyInputEmpty = Object.values(inputValues).some((value) =>
@@ -189,144 +198,46 @@ const RaportProvider = ({ children }) => {
       parseFloat(diameter),
     );
 
-    // Calculate period, gravity, and lengthLResult based on inputValues
+    // Object to store calculated results
     const calculatedResult = {
       lengthLResult,
-      20: {
-        'small-20': {
-          T: parseFloat(periods[20]['smallInput-20']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[20]['smallInput-20']),
-          ),
-        },
-        'medium-20': {
-          T: parseFloat(periods[20]['mediumInput-20']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[20]['mediumInput-20']),
-          ),
-        },
-        'large-20': {
-          T: parseFloat(periods[20]['largeInput-20']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[20]['largeInput-20']),
-          ),
-        },
-      },
-      30: {
-        'small-30': {
-          T: parseFloat(periods[30]['smallInput-30']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[30]['smallInput-30']),
-          ),
-        },
-        'medium-30': {
-          T: parseFloat(periods[30]['mediumInput-30']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[30]['mediumInput-30']),
-          ),
-        },
-        'large-30': {
-          T: parseFloat(periods[30]['largeInput-30']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[30]['largeInput-30']),
-          ),
-        },
-      },
-      50: {
-        'small-50': {
-          T: parseFloat(periods[50]['smallInput-50']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[50]['smallInput-50']),
-          ),
-        },
-        'medium-50': {
-          T: parseFloat(periods[50]['mediumInput-50']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[50]['mediumInput-50']),
-          ),
-        },
-        'large-50': {
-          T: parseFloat(periods[50]['largeInput-50']),
-          g: calculateGravity(
-            lengthLResult,
-            parseFloat(periods[50]['largeInput-50']),
-          ),
-        },
-      },
-      Avg: {
-        'small-Avg': {
-          T:
-            (parseFloat(periods[20]['smallInput-20']) +
-              parseFloat(periods[30]['smallInput-30']) +
-              parseFloat(periods[50]['smallInput-50'])) /
-            3,
-          g:
-            (calculateGravity(
-              lengthLResult,
-              parseFloat(periods[20]['smallInput-20']),
-            ) +
-              calculateGravity(
-                lengthLResult,
-                parseFloat(periods[30]['smallInput-30']),
-              ) +
-              calculateGravity(
-                lengthLResult,
-                parseFloat(periods[50]['smallInput-50']),
-              )) /
-            3,
-        },
-        'medium-Avg': {
-          T:
-            (parseFloat(periods[20]['mediumInput-20']) +
-              parseFloat(periods[30]['mediumInput-30']) +
-              parseFloat(periods[50]['mediumInput-50'])) /
-            3,
-          g:
-            (calculateGravity(
-              lengthLResult,
-              parseFloat(periods[20]['mediumInput-20']),
-            ) +
-              calculateGravity(
-                lengthLResult,
-                parseFloat(periods[30]['mediumInput-30']),
-              ) +
-              calculateGravity(
-                lengthLResult,
-                parseFloat(periods[50]['mediumInput-50']),
-              )) /
-            3,
-        },
-        'large-Avg': {
-          T:
-            (parseFloat(periods[20]['largeInput-20']) +
-              parseFloat(periods[30]['largeInput-30']) +
-              parseFloat(periods[50]['largeInput-50'])) /
-            3,
-          g:
-            (calculateGravity(
-              lengthLResult,
-              parseFloat(periods[20]['largeInput-20']),
-            ) +
-              calculateGravity(
-                lengthLResult,
-                parseFloat(periods[30]['largeInput-30']),
-              ) +
-              calculateGravity(
-                lengthLResult,
-                parseFloat(periods[50]['largeInput-50']),
-              )) /
-            3,
-        },
-      },
     };
+
+    // Calculate T and g for each combination of period and size
+    periodsConfig.forEach((n) => {
+      sizes.forEach((size) => {
+        const inputKey = `${size}Input-${n}`;
+        const resultKey = `${size}-${n}`;
+
+        // Initialize result object for the current period if not exists
+        calculatedResult[n] = calculatedResult[n] || {};
+
+        // Calculate and store T and g in the result object
+        calculatedResult[n][resultKey] = calculateTAndG(
+          periods[n][inputKey],
+          n,
+          lengthLResult,
+        );
+      });
+    });
+
+    // Calculate average T and g for each size
+    calculatedResult.Avg = {};
+
+    sizes.forEach((size) => {
+      calculatedResult.Avg[`${size}-Avg`] = {
+        T:
+          (calculatedResult[20][`${size}-20`].T +
+            calculatedResult[30][`${size}-30`].T +
+            calculatedResult[50][`${size}-50`].T) /
+          3,
+        g:
+          (calculatedResult[20][`${size}-20`].g +
+            calculatedResult[30][`${size}-30`].g +
+            calculatedResult[50][`${size}-50`].g) /
+          3,
+      };
+    });
     dispatchResult({ type: 'CALCULATE_RESULT', result: calculatedResult });
   };
 
@@ -358,12 +269,19 @@ const RaportProvider = ({ children }) => {
   };
 
   // Event handler for exporting to PDF
-  const handleExportToPDF = () => {
+  const handleExportToPDF = async () => {
     // Check if there is at least one element in history and conclusions is not empty
     if (
       resultState.history.length > 0 &&
       resultState.conclusions.trim() !== ''
     ) {
+      const blob = await pdf(
+        <PDFTemplate
+          history={resultState.history}
+          conclusions={resultState.conclusions.trim()}
+        />,
+      ).toBlob();
+      saveAs(blob, 'sprawozdanie.pdf');
       dispatchResult({ type: 'EXPORT_TO_PDF' });
     } else {
       console.log(

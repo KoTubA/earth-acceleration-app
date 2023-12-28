@@ -15,17 +15,21 @@ const PeriodDataOutput = ({ title, result }) => {
             className="grid grid-cols-2 justify-items-stretch text-center font-medium"
           >
             <div
-              className={`col-span-full bg-gray-200 p-1 border-b border-sky-950${
+              className={`col-span-full bg-slate-300 p-1 border-b border-sky-950${
                 index === array.length - 1 ? '' : ' md:border-r'
               }`}
             >
               {resultFields[index]}
             </div>
-            <div className={'col-span-1 p-1 border-b border-r border-sky-950'}>
+            <div
+              className={
+                'col-span-1 bg-gray-200 p-1 border-b border-r border-sky-950'
+              }
+            >
               T
             </div>
             <div
-              className={`col-span-1 p-1 border-sky-950 border-b ${
+              className={`col-span-1 bg-gray-200 p-1 border-sky-950 border-b ${
                 index === array.length - 1 ? '' : ' md:border-r'
               }`}
             >
@@ -33,7 +37,7 @@ const PeriodDataOutput = ({ title, result }) => {
             </div>
             <div
               className={
-                'col-span-1 bg-gray-200 p-1 font-normal border-sky-950 border-r border-b md:border-b-0'
+                'col-span-1 p-1 font-normal border-sky-950 overflow-hidden border-r border-b md:border-b-0'
               }
             >
               <span title={result[key].T} className="truncate">
@@ -43,7 +47,7 @@ const PeriodDataOutput = ({ title, result }) => {
               </span>
             </div>
             <div
-              className={`col-span-1 bg-gray-200 p-1 font-normal border-sky-950 border-b md:border-b-0${
+              className={`col-span-1 p-1 font-normal overflow-hidden border-sky-950 border-b md:border-b-0${
                 index === array.length - 1 ? '' : ' md:border-r'
               }`}
             >
