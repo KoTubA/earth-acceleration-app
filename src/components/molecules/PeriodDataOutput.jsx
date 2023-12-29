@@ -4,10 +4,8 @@ const resultFields = ['Małe α', 'Średnie α', 'Duże α'];
 
 const PeriodDataOutput = ({ title, result }) => {
   return (
-    <div className="mb-6 md:mb-4 border border-sky-950">
-      <h4 className="text-center text-white bg-sky-950 font-display pt-2 pb-2">
-        {title}
-      </h4>
+    <div className="mb-6 md:mb-4 border border-sky-950 border-b-0 md:border-b font-display">
+      <h4 className="text-center text-white bg-sky-950 pt-2 pb-2">{title}</h4>
       <div className="grid md:grid-cols-3">
         {Object.keys(result).map((key, index, array) => (
           <div

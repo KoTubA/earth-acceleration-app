@@ -5,6 +5,7 @@ import ResultCard from 'src/components/molecules/ResultCard';
 import InputField from 'src/components/atoms/InputField';
 import PeriodDataOutput from 'src/components/molecules/PeriodDataOutput';
 import { RaportContext } from 'src/providers/RaportProvider';
+import { InlineMath } from 'react-katex';
 
 // Array of periods for calculations
 const periods = [20, 30, 50];
@@ -49,7 +50,7 @@ const Results = () => {
                 />
               ))
             ) : (
-              <p className="text-center text-gray-500">
+              <p className="text-center text-gray-500 font-display">
                 Brak zapisanych wyników.
               </p>
             )}
@@ -60,7 +61,7 @@ const Results = () => {
             <SectionTitle title="Dane wejściowe" isSmall />
             <div className="grid gap-4">
               <InputField
-                label="Długość nici z haczykiem (l):"
+                label="Długość nici z haczykiem (l)[m]:"
                 type="number"
                 id="lengthL"
                 name="lengthL"
@@ -68,7 +69,7 @@ const Results = () => {
                 onChange={handleInputChange}
               />
               <InputField
-                label="Średnica kulki (d):"
+                label="Średnica kulki (d)[m]:"
                 type="number"
                 id="diameter"
                 name="diameter"
@@ -79,7 +80,7 @@ const Results = () => {
           </div>
           <div className="col-span-full lg:col-start-1 lg:row-start-2 lg:col-span-1">
             <span className="block mb-1 text-sm font-medium text-gray-900 font-display">
-              Czas t[s] n drgań:
+              Czas (t)[s] n drgań:
             </span>
             {periods.map((n) => (
               <div key={n} className="mb-6 lg:mb-4 border border-gray-200">
@@ -101,6 +102,32 @@ const Results = () => {
                 </div>
               </div>
             ))}
+            <ul className="-mt-3 lg:mt-0 mb-10 lg:mb-0">
+              <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
+                <span className="bg-gray-200/75 px-1 mr-1 italic">
+                  <InlineMath math="α" />
+                </span>
+                – wychylenie początkowe,
+              </li>
+              <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
+                <span className="bg-gray-200/75 px-1 mr-1 italic">
+                  <InlineMath math="T" />
+                </span>
+                – okres w
+                <span className="ml-1">
+                  <InlineMath math="[s]" />
+                </span>
+              </li>
+              <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
+                <span className="bg-gray-200/75 px-1 mr-1 italic">
+                  <InlineMath math="g" />
+                </span>
+                – przyspieszenie ziemskie w
+                <span className="ml-1">
+                  <InlineMath math="[\frac{m}{s^2}]" />
+                </span>
+              </li>
+            </ul>
           </div>
           <div className="col-span-full lg:col-start-2 lg:row-start-1 lg:col-span-1">
             <SectionTitle title="Dane wyjściowe" isSmall />
@@ -109,12 +136,12 @@ const Results = () => {
                 htmlFor="lengthLResult"
                 className="block mb-1 text-sm font-medium font-display"
               >
-                Długość wahadła (l0):
+                Długość wahadła (l)[m]:
               </label>
               <input
                 type="number"
                 id="lengthLResult"
-                className="text-sm border border-gray-300 focus:outline-none focus:border-sky-500 w-full p-2.5"
+                className="text-sm border border-gray-300 focus:outline-none focus:border-sky-500 w-full p-2.5 font-display"
                 value={resultState.currentResult.lengthLResult}
                 disabled
               />

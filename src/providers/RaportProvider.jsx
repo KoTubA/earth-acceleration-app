@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { saveAs } from 'file-saver';
 import { pdf } from '@react-pdf/renderer';
@@ -128,6 +128,8 @@ export const RaportContext = React.createContext({
   handleDeleteResult: () => {},
   handleConclusionsChange: () => {},
   handleExportToPDF: () => {},
+  error: false,
+  errormsg: '',
 });
 
 const RaportProvider = ({ children }) => {
@@ -137,6 +139,24 @@ const RaportProvider = ({ children }) => {
     history: [],
     conclusions: '',
   });
+  const [error, setError] = useState(false);
+  const [errormsg, setErrormsg] = useState('');
+
+  let timer;
+  const setTimer = () => {
+    timer = setTimeout(() => {
+      setError(false);
+      setErrormsg('');
+    }, 7000);
+  };
+
+  const dispatchError = useCallback(async (message) => {
+    clearTimeout(timer);
+    await setError(false);
+    await setErrormsg(message);
+    await setError(true);
+    setTimer();
+  }, []);
 
   // Event handler for input value changes
   const handleInputChange = (e) => {
@@ -171,7 +191,9 @@ const RaportProvider = ({ children }) => {
 
     // If any input value is empty, prevent calculation and display an error
     if (isAnyInputEmpty) {
-      console.log('Please fill in all input fields before calculating.');
+      dispatchError(
+        'Uzupełnij wszytkie pola wejściowe przed obliczeniem wyników.',
+      );
       return;
     }
 
@@ -186,8 +208,8 @@ const RaportProvider = ({ children }) => {
 
     // If any input value is not a number, prevent calculation and display an error
     if (isAnyInputNotNumber) {
-      console.log(
-        'Please enter valid numeric values in all input fields before calculating.',
+      dispatchError(
+        'Wprowadź poprawne wartości liczbowe przed obliczeniem wyników.',
       );
       return;
     }
@@ -254,7 +276,7 @@ const RaportProvider = ({ children }) => {
       dispatchInput({ type: 'RESET_FORM' });
     } else {
       // Handle the case where the user tries to save without calculating first
-      console.log('Cannot save result without calculating first.');
+      dispatchError('Nie można zapisać wyniku bez wcześniejszego obliczenia.');
     }
   };
 
@@ -272,7 +294,7 @@ const RaportProvider = ({ children }) => {
   const handleExportToPDF = async () => {
     // Check if there is at least one element in history and conclusions is not empty
     if (
-      resultState.history.length > 0 &&
+      resultState.history.length >= 3 &&
       resultState.conclusions.trim() !== ''
     ) {
       const blob = await pdf(
@@ -284,8 +306,8 @@ const RaportProvider = ({ children }) => {
       saveAs(blob, 'sprawozdanie.pdf');
       dispatchResult({ type: 'EXPORT_TO_PDF' });
     } else {
-      console.log(
-        'Cannot export to PDF. Ensure there is at least one element in history and conclusions are not empty.',
+      dispatchError(
+        'W celu exportu do pliku PDF, należy zapisać przynajmniej 3 wyniki oraz uzupełnić wnioski.',
       );
     }
   };
@@ -302,6 +324,8 @@ const RaportProvider = ({ children }) => {
         handleDeleteResult,
         handleConclusionsChange,
         handleExportToPDF,
+        error,
+        errormsg,
       }}
     >
       {children}
