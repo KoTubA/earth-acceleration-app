@@ -29,7 +29,7 @@ const Results = () => {
 
   return (
     <section className="flex justify-center w-full" id="reports">
-      <div className="flex flex-col items-center py-16 px-7 lg:px-14 xl:px-20 max-w-screen-xl w-full">
+      <div className="flex flex-col items-center py-16 lg:py-20 px-7 lg:px-14 xl:px-20 max-w-screen-xl w-full">
         <SectionTitle
           title="Raport"
           subtitle="Skorzystaj z poniższych pól, aby wprowadzić wyniki eksperymentu."
@@ -137,7 +137,7 @@ const Results = () => {
             />
           </div>
         </form>
-        <div className="flex justify-center gap-x-4 w-full mt-6">
+        <div className="flex justify-center gap-x-4 w-full mt-12">
           <Button title="Oblicz wynik" onClick={handleCalculateResult} />
           <Button title="Zapisz wynik" onClick={handleSaveResult} inverted />
         </div>

@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderLeftWidth: 0,
     borderTopWidth: 0,
+    overflow: 'hidden',
   },
   tableHeader: {
     width: '100%',
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
     margin: 'auto',
     paddingVertical: 8,
     fontSize: 10,
+    overflow: 'hidden',
   },
 });
 
@@ -129,12 +131,16 @@ const renderTable = (result, size) => (
         <React.Fragment key={key}>
           <View style={styles.tableCol}>
             <Text style={styles.tableCell}>
-              {result[size]?.[key]?.T !== undefined ? result[size][key].T : '-'}
+              {result[size]?.[key]?.T !== undefined
+                ? result[size][key].T.toFixed(5)
+                : '-'}
             </Text>
           </View>
           <View style={styles.tableCol}>
             <Text style={styles.tableCell}>
-              {result[size]?.[key]?.g !== undefined ? result[size][key].g : '-'}
+              {result[size]?.[key]?.g !== undefined
+                ? result[size][key].g.toFixed(5)
+                : '-'}
             </Text>
           </View>
         </React.Fragment>

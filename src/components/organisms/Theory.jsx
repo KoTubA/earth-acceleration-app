@@ -1,25 +1,27 @@
 import SectionTitle from 'src/components/molecules/SectionTitle';
-import Asset from 'src/assets/images/suwmiarka.jpg';
 import { InlineMath, BlockMath } from 'react-katex';
+import Asset from 'src/assets/images/vernier-caliper.jpg';
+import Asset2 from 'src/assets/images/muzammil-soorma.jpg';
+import Asset3 from 'src/assets/images/nasa.jpg';
+import Asset4 from 'src/assets/images/wahadło-matematyczne.jpg';
+import Asset5 from 'src/assets/images/wykres-ruchu-harmonicznego.jpg';
+import Asset6 from 'src/assets/images/pulse.jpg';
 
 const Theory = () => {
   return (
     <section className="flex justify-center w-full" id="theory">
-      <div className="flex flex-col items-center py-16 px-7 lg:px-14 xl:px-20 max-w-screen-xl w-full">
+      <div className="flex flex-col items-center py-16 lg:py-20 px-7 lg:px-14 xl:px-20 max-w-screen-xl w-full">
         <SectionTitle
           title="Teoria"
           subtitle="Zapoznaj się z poniższą informacją w celu wykonania eksperymentu."
         />
-        <div className="flex flex-col md:flex-row mb-12">
-          <div className="w-full mb-6 md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
+        <div className="flex flex-col md:flex-row mb-16">
+          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:mr-3 lg:mr-6 xl:mr-12">
             <img
-              className="w-full border border-stone-200 mb-1"
+              className="w-full border border-stone-200"
               src={Asset}
               alt="Suwmiarka"
             />
-            <span className="text-xs italic text-stone-400 break-all">
-              https://www.edukator.pl/tik_edukator_2/Reading%20A%20Caliper.html
-            </span>
           </div>
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
             <h4 className="text-lg bold font-medium pb-2">
@@ -39,7 +41,7 @@ const Theory = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col-reverse md:flex-row mb-12">
+        <div className="flex flex-col-reverse md:flex-row mb-16">
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <h4 className="text-lg bold font-medium pb-2">
               Siła grawitacyjna i ciężar:
@@ -74,10 +76,22 @@ const Theory = () => {
               </ul>
             </div>
           </div>
-          <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12"></div>
+          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:ml-3 lg:ml-6 xl:ml-12">
+            <img
+              className="w-full border border-stone-200"
+              src={Asset2}
+              alt="Suwmiarka"
+            />
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row mb-12">
-          <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12"></div>
+        <div className="flex flex-col md:flex-row mb-16">
+          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:mr-3 lg:mr-6 xl:mr-12">
+            <img
+              className="w-full border border-stone-200"
+              src={Asset3}
+              alt="Suwmiarka"
+            />
+          </div>
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
             <h4 className="text-lg bold font-medium pb-2">
               Przyspieszenie ziemskie i sposoby jego wyznaczania:
@@ -95,10 +109,10 @@ const Theory = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col-reverse md:flex-row mb-12">
+        <div className="flex flex-col-reverse md:flex-row mb-16">
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <h4 className="text-lg bold font-medium pb-2">
-              Wahadło matematyczne – wyprowadzenie wzoru na okres drgań:
+              Okres drgań wahadła matematycznego:
             </h4>
             <div className="text-base	leading-7">
               <p>
@@ -144,10 +158,28 @@ const Theory = () => {
               </p>
             </div>
           </div>
-          <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12"></div>
+          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:ml-3 lg:ml-6 xl:ml-12">
+            <img
+              className="w-full border border-stone-200"
+              src={Asset4}
+              alt="Suwmiarka"
+            />
+            <span className="block text-xs italic text-stone-400 break-all mt-1 mb-2 md:mb-0">
+              https://www.sklep.fpnnysa.com.pl/userdata/gfx/ae43409f2b638a845544f9c40901b39e.jpg
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row mb-12">
-          <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12"></div>
+        <div className="flex flex-col md:flex-row mb-16">
+          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:mr-3 lg:mr-6 xl:mr-12">
+            <img
+              className="w-full border border-stone-200"
+              src={Asset5}
+              alt="Suwmiarka"
+            />
+            <span className="block text-xs italic text-stone-400 break-all mt-1 mb-2 md:mb-0">
+              https://www.medianauka.pl/fizyka/grafika/wykres-ruchu-harmonicznego.jpg
+            </span>
+          </div>
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
             <h4 className="text-lg bold font-medium pb-2">
               Ruch harmoniczny prosty:
@@ -188,7 +220,7 @@ const Theory = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col-reverse md:flex-row mb-12">
+        <div className="flex flex-col-reverse md:flex-row mb-16">
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
             <h4 className="text-lg bold font-medium pb-2">
               Prawo izochronizmu:
@@ -204,7 +236,13 @@ const Theory = () => {
               </p>
             </div>
           </div>
-          <div className="bg-stone-200 h-64 w-full mb-6 md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12"></div>
+          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:ml-3 lg:ml-6 xl:ml-12">
+            <img
+              className="w-full border border-stone-200"
+              src={Asset6}
+              alt="Suwmiarka"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ const Conclusion = () => {
 
   return (
     <section className="flex justify-center bg-gray-100 w-full">
-      <div className="flex flex-col items-center py-16 px-7 lg:px-14 xl:px-20 max-w-screen-xl w-full">
+      <div className="flex flex-col items-center py-16 lg:py-20 px-7 lg:px-14 xl:px-20 max-w-screen-xl w-full">
         <SectionTitle title="Wnioski" />
         <div className="flex flex-col items-center w-full">
           <label

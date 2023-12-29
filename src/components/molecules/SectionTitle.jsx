@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const SectionTitle = ({ title, subtitle, isSmall }) => {
   return (
-    <div className="mb-8 lg:mb-12 flex flex-col items-center">
+    <div className="mb-12 lg:mb-16 flex flex-col items-center">
       <h2
         className={`mb-5 ${
           isSmall ? 'text-2xl' : 'text-4xl'
