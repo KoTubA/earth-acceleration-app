@@ -113,7 +113,7 @@ const Results = () => {
                 <span className="bg-gray-200/75 px-1 mr-1 italic">
                   <InlineMath math="T" />
                 </span>
-                – okres w
+                – okres drgań wahadła w
                 <span className="ml-1">
                   <InlineMath math="[s]" />
                 </span>

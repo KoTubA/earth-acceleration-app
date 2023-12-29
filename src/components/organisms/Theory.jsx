@@ -80,7 +80,7 @@ const Theory = () => {
             <img
               className="w-full border border-stone-200"
               src={Asset2}
-              alt="Suwmiarka"
+              alt="Skok ze spadochronem"
             />
           </div>
         </div>
@@ -89,7 +89,7 @@ const Theory = () => {
             <img
               className="w-full border border-stone-200"
               src={Asset3}
-              alt="Suwmiarka"
+              alt="Widok ziemi z kosmosu"
             />
           </div>
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
@@ -98,14 +98,34 @@ const Theory = () => {
             </h4>
             <div className="text-base	leading-7">
               <p>
-                Przyśpieszenie ziemskie oznaczamy jako g, jest to przyśpieszenie
-                jakie ciało swobodnie opadając nabiera pod wpływem grawitacji.
-                Wartość przyspieszenia ziemskiego wynosi
+                Przyśpieszenie ziemskie oznaczamy jako <InlineMath math="g" />,
+                jest to przyśpieszenie jakie ciało swobodnie opadając nabiera
+                pod wpływem grawitacji. Wartość przyspieszenia ziemskiego wynosi
                 <InlineMath math="\text{ \textasciitilde} 9,8 \frac{m}{s^2}\text{. }" />
-                Można je wyznaczyć za pomocą swobodnego spadku ciała lub,
-                obliczyć przy pomocy wzorów związanych z ruchem jednostajnie
-                opadającym.
+                Posługując się wahadłem matematycznym, możemy wyznaczyć wartość
+                przyśpieszenia ziemskiego w danym miejscu za pomocą równania:
               </p>
+              <BlockMath math="g = \frac{4 \pi^2 l}{T^2}" />
+              <ul className="list-none p-0 m-0">
+                <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
+                  <span className="bg-gray-200/75 px-1 mr-1 italic">
+                    <InlineMath math="g" />
+                  </span>
+                  – to przyśpieszenie ziemskie;
+                </li>
+                <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
+                  <span className="bg-gray-200/75 px-1 mr-1 italic">
+                    <InlineMath math="l" />
+                  </span>
+                  – to długość wahadła;
+                </li>
+                <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
+                  <span className="bg-gray-200/75 px-1 mr-1 italic">
+                    <InlineMath math="T" />
+                  </span>
+                  – to okres drgań wahadła;
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -162,7 +182,7 @@ const Theory = () => {
             <img
               className="w-full border border-stone-200"
               src={Asset4}
-              alt="Suwmiarka"
+              alt="Wahadło matematyczne"
             />
             <span className="block text-xs italic text-stone-400 break-all mt-1 mb-2 md:mb-0">
               https://www.sklep.fpnnysa.com.pl/userdata/gfx/ae43409f2b638a845544f9c40901b39e.jpg
@@ -174,7 +194,7 @@ const Theory = () => {
             <img
               className="w-full border border-stone-200"
               src={Asset5}
-              alt="Suwmiarka"
+              alt="Wykres ruchu harmonicznego"
             />
             <span className="block text-xs italic text-stone-400 break-all mt-1 mb-2 md:mb-0">
               https://www.medianauka.pl/fizyka/grafika/wykres-ruchu-harmonicznego.jpg
@@ -240,7 +260,7 @@ const Theory = () => {
             <img
               className="w-full border border-stone-200"
               src={Asset6}
-              alt="Suwmiarka"
+              alt="Kula w Newtonowskim wahadle pulsacyjnym"
             />
           </div>
         </div>
