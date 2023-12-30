@@ -156,6 +156,7 @@ const RaportProvider = ({ children }) => {
     await setErrormsg(message);
     await setError(true);
     setTimer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Event handler for input value changes

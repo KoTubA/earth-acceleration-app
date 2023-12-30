@@ -12,6 +12,7 @@ const InputField = ({ label, type, id, name, value, onChange }) => {
       <input
         type={type}
         id={id}
+        data-testid={id}
         name={name}
         className="text-sm border border-gray-300 focus:outline-none focus:border-sky-500 w-full p-2.5 font-display"
         value={value}

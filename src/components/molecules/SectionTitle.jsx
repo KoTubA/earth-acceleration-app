@@ -11,7 +11,7 @@ const SectionTitle = ({ title, subtitle, isSmall }) => {
         {title}
       </h2>
       {subtitle && (
-        <p className="text-center font-display text-base">{subtitle}</p>
+        <p className="text-center font-display text-base mb-4">{subtitle}</p>
       )}
     </div>
   );

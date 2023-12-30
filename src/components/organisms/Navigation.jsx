@@ -16,7 +16,7 @@ const Navigation = () => {
 
   return (
     <div className="flex justify-center w-full">
-      <div className="flex justify-between items-center px-7 h-20 lg:px-14 xl:px-20 max-w-screen-xl w-full bg-white">
+      <div className="flex justify-between items-center px-7 h-20 md:h-24 lg:h-32 lg:px-14 xl:px-20 max-w-screen-xl w-full bg-white">
         <header className="text-2xl font-bold font-display">
           Physics Laboratory
         </header>

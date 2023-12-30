@@ -10,4 +10,10 @@ export default defineConfig({
       src: '/src',
     },
   },
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    setupFiles: './src/setupTests.js',
+    css: true,
+  },
 });
