@@ -14,8 +14,8 @@ const Home = () => {
             Kalkulator przyspieszenia ziemskiego
           </h1>
           <p className="lg:text-lg mt-4 mb-8 xl:mt-6 text-center font-display md:text-start text-neutral-600">
-            Aplikacja pomagająca studentom wykonywanie ćwiczeń w Pracowni
-            Fizycznej
+            Aplikacja pomagająca studentom wykonywanie ćwiczeń w{'\u00A0'}
+            Pracowni Fizycznej
           </p>
           <Link to="overview">
             <Button title="Rozpocznij teraz" />

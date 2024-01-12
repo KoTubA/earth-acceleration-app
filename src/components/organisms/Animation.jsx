@@ -18,12 +18,12 @@ const Animation = () => {
           <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
             <div className="text-base	leading-7">
               <p>
-                Zapoznaj się z animacją, która ilustruje pomiar przyspieszenia
-                ziemskiego przy użyciu matematycznego wahadła krok po kroku.
-                Wideo pomoże ci zrozumienie na czym polega eksperyment oraz
-                wytłumaczy jakich przyrządów będziesz potrzebował. Następnie
-                przeprowadź eksperyment, a uzyskane wyniki wprowadź do
-                kalkulatora poniżej.
+                Zapoznaj się z{'\u00A0'}animacją, która ilustruje pomiar
+                przyspieszenia ziemskiego przy użyciu matematycznego wahadła
+                krok po kroku. Wideo pomoże ci zrozumienie na czym polega
+                eksperyment oraz wytłumaczy jakich przyrządów będziesz
+                potrzebował. Następnie przeprowadź eksperyment, a{'\u00A0'}
+                uzyskane wyniki wprowadź do kalkulatora poniżej.
               </p>
             </div>
           </div>

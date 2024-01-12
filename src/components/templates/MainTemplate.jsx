@@ -9,6 +9,7 @@ import Results from 'src/components/organisms/Results';
 import Conclusion from 'src/components/organisms/Conclusion';
 import ErrorMessage from 'src/components/molecules/ErrorMessage';
 import { RaportContext } from 'src/providers/RaportProvider';
+import FurtherReading from 'src/components/organisms/FurtherReading';
 
 const MainTemplate = () => {
   const { error, errormsg } = useContext(RaportContext);
@@ -20,6 +21,7 @@ const MainTemplate = () => {
       <Overview />
       <Theory />
       <Animation />
+      <FurtherReading />
       <Results />
       <Conclusion />
       <Footer />

@@ -11,22 +11,22 @@ const Overview = () => {
           <DecorationLineWithDot>
             <Step number="1" title="Krótki wstęp" />
             <p className="leading-7 font-display text-center max-w-xs md:text-start text-neutral-600">
-              Krótka prezentacja teoretyczna i animacja ułatwiają zrozumienie
-              podstawowych właściwości fizycznych.
+              Krótka prezentacja teoretyczna i{'\u00A0'}animacja ułatwiają
+              zrozumienie podstawowych właściwości fizycznych.
             </p>
           </DecorationLineWithDot>
           <DecorationLineWithDot>
             <Step number="2" title="Wprowadzanie danych" />
             <p className="leading-7 font-display text-center max-w-xs md:text-start md:pb-0 md:pr-5 text-neutral-600">
-              Formularz do wprowadzania wyników eksperymentu i formułowania
-              wniosków na podstawie danych.
+              Formularz do wprowadzania wyników eksperymentu i{'\u00A0'}
+              formułowania wniosków na podstawie danych.
             </p>
           </DecorationLineWithDot>
           <DecorationLineWithDot isLastChild>
             <Step number="3" title="Eksport sprawozdań" />
             <p className="leading-7 font-display text-center max-w-xs md:text-start md:pb-0 text-neutral-600">
-              Eksport sprawozdań do pliku PDF, ułatwia udostępnianie i
-              przechowywanie wyników oraz wniosków z eksperymentu.
+              Eksport sprawozdań do pliku PDF, ułatwia udostępnianie i{'\u00A0'}
+              przechowywanie wyników oraz wniosków z{'\u00A0'}eksperymentu.
             </p>
           </DecorationLineWithDot>
         </div>

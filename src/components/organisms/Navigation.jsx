@@ -59,6 +59,13 @@ const Navigation = () => {
             Animacja
           </Link>
           <Link
+            to="further-reading"
+            className="mx-3 lg:mx-4 cursor-pointer md:hover:text-sky-600"
+            onClick={handleClick}
+          >
+            Literatura
+          </Link>
+          <Link
             to="reports"
             className="mx-3 lg:ml-4 lg:mr-0 cursor-pointer md:hover:text-sky-600"
             onClick={handleClick}

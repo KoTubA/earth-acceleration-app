@@ -6,6 +6,7 @@ import InputField from 'src/components/atoms/InputField';
 import PeriodDataOutput from 'src/components/molecules/PeriodDataOutput';
 import { RaportContext } from 'src/providers/RaportProvider';
 import { InlineMath } from 'react-katex';
+import ListItem from 'src/components/atoms/ListItem';
 
 // Array of periods for calculations
 const periods = [20, 30, 50];
@@ -103,30 +104,26 @@ const Results = () => {
               </div>
             ))}
             <ul className="-mt-3 lg:mt-0 mb-10 lg:mb-0">
-              <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
-                <span className="bg-gray-200/75 px-1 mr-1 italic">
+              <ListItem>
+                <span className="bg-gray-200/75 p-1 mr-1 italic">
                   <InlineMath math="α" />
                 </span>
                 – wychylenie początkowe,
-              </li>
-              <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
-                <span className="bg-gray-200/75 px-1 mr-1 italic">
+              </ListItem>
+              <ListItem>
+                <span className="bg-gray-200/75 p-1 mr-1 italic">
                   <InlineMath math="T" />
                 </span>
-                – okres drgań wahadła w
-                <span className="ml-1">
-                  <InlineMath math="[s]" />
-                </span>
-              </li>
-              <li className="relative flex items-center pl-5 my-3 before:absolute before:border before:rounded before:w-2 before:h-2 before:border-sky-500 before:left-0">
-                <span className="bg-gray-200/75 px-1 mr-1 italic">
+                – okres drgań wahadła w{'\u00A0'}
+                <InlineMath math="[s]" />
+              </ListItem>
+              <ListItem>
+                <span className="bg-gray-200/75 p-1 mr-1 italic">
                   <InlineMath math="g" />
                 </span>
-                – przyspieszenie ziemskie w
-                <span className="ml-1">
-                  <InlineMath math="[\frac{m}{s^2}]" />
-                </span>
-              </li>
+                – przyspieszenie ziemskie w{'\u00A0'}
+                <InlineMath math="[\frac{m}{s^2}]" />
+              </ListItem>
             </ul>
           </div>
           <div className="col-span-full lg:col-start-2 lg:row-start-1 lg:col-span-1">

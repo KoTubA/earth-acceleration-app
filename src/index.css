@@ -14,3 +14,12 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.katex > .katex-html {
+  white-space: normal;
+}
+
+.katex .base {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
