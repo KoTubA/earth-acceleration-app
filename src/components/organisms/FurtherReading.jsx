@@ -13,7 +13,7 @@ const FurtherReading = () => {
           title="Literatura"
           subtitle="Zapoznaj się z poniższą literaturą w celu pogłębienia wiedzy."
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 mb-16 text-neutral-900 gap-4 w-full">
+        <div className="grid lg:grid-cols-3 mb-16 text-neutral-900 gap-6 w-full">
           <div className="font-display bg-white p-8 flex flex-col text-justify">
             <h5 className="text-lg font-medium pb-2">
               Siła ciężkości (grawitacji):
