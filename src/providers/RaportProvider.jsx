@@ -295,7 +295,7 @@ const RaportProvider = ({ children }) => {
   const handleExportToPDF = async () => {
     // Check if there is at least one element in history and conclusions is not empty
     if (
-      resultState.history.length >= 3 &&
+      resultState.history.length >= 1 &&
       resultState.conclusions.trim() !== ''
     ) {
       const blob = await pdf(
@@ -308,7 +308,7 @@ const RaportProvider = ({ children }) => {
       dispatchResult({ type: 'EXPORT_TO_PDF' });
     } else {
       dispatchError(
-        'W celu exportu do pliku PDF, należy zapisać przynajmniej 3 wyniki oraz uzupełnić wnioski.',
+        'W celu exportu do pliku PDF, należy zapisać przynajmniej 1 wynik oraz uzupełnić wnioski.',
       );
     }
   };
