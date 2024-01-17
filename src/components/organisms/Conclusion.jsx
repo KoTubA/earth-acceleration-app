@@ -25,7 +25,7 @@ const Conclusion = () => {
             onChange={handleConclusionsChange}
             className="block resize-none p-2.5 w-full text-sm text-black bg-white border border-gray-300 focus:outline-none focus:border-sky-500 mb-9 font-display"
           ></textarea>
-          <Button title="Export to PDF" onClick={handleExportToPDF} />
+          <Button title="Eksportuj do PDF" onClick={handleExportToPDF} />
         </div>
       </div>
     </section>

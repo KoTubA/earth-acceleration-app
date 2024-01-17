@@ -38,7 +38,7 @@ const Results = () => {
         />
         <div className="flex flex-col mb-12 w-full">
           <span className="block mb-1 text-sm font-medium text-gray-900 font-display">
-            Tabela wyników:
+            Tabela zapisanych wyników:
           </span>
           <div className="flex w-full gap-4 overflow-x-auto lg:flex-wrap pb-2">
             {resultState.history.length > 0 ? (
