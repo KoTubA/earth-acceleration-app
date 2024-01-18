@@ -19,11 +19,11 @@ const Animation = () => {
           <FlexibleContainer isRight>
             <div className="text-base	leading-7">
               <p>
-                Zapoznaj się z{'\u00A0'}animacją, która ilustruje pomiar
+                Zapoznaj się z{'\u00A0'} animacją ilustrującą pomiar
                 przyspieszenia ziemskiego przy użyciu matematycznego wahadła
-                krok po kroku. Wideo pomoże ci zrozumienie na czym polega
-                eksperyment oraz wytłumaczy jakich przyrządów będziesz
-                potrzebował. Następnie przeprowadź eksperyment, a{'\u00A0'}
+                krok po kroku. Wideo pomoże Ci zrozumieć, na czym polega
+                eksperyment, oraz wytłumaczy, jakich przyrządów będziesz
+                potrzebować. Następnie przeprowadź eksperyment, a{'\u00A0'}
                 uzyskane wyniki wprowadź do kalkulatora poniżej.
               </p>
             </div>
