@@ -1,5 +1,7 @@
 import SectionTitle from 'src/components/molecules/SectionTitle';
 import ListItem from 'src/components/atoms/ListItem';
+import Image from 'src/components/molecules/Image';
+import FlexibleContainer from 'src/components/atoms/FlexibleContainer';
 import { InlineMath, BlockMath } from 'react-katex';
 import Asset from 'src/assets/images/vernier-caliper.jpg';
 import Asset2 from 'src/assets/images/muzammil-soorma.jpg';
@@ -15,17 +17,14 @@ const Theory = () => {
           subtitle="Zapoznaj się z poniższą informacją w celu wykonania eksperymentu."
         />
         <div className="flex flex-col md:flex-row mb-16">
-          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:mr-3 lg:mr-6 xl:mr-12">
-            <img
-              className="w-full border border-stone-200"
+          <FlexibleContainer>
+            <Image
               src={Asset}
               alt="Suwmiarka"
+              sourceLink="https://www.edukator.pl/tik_edukator_2/Reading%20A%20Caliper.html"
             />
-            <span className="block text-xs italic text-stone-400 break-all mt-1 mb-2 md:mb-0">
-              https://www.edukator.pl/tik_edukator_2/Reading%20A%20Caliper.html
-            </span>
-          </div>
-          <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
+          </FlexibleContainer>
+          <FlexibleContainer isRight>
             <h4 className="text-lg font-medium pb-2">
               Instrukcja korzystania z{'\u00A0'}suwmiarki:
             </h4>
@@ -42,10 +41,10 @@ const Theory = () => {
                 dokładnie, w{'\u00A0'}celu uzyskania precyzyjnego pomiaru.
               </p>
             </div>
-          </div>
+          </FlexibleContainer>
         </div>
         <div className="flex flex-col-reverse md:flex-row mb-16">
-          <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
+          <FlexibleContainer>
             <h4 className="text-lg font-medium pb-2">
               Siła ciężkości (grawitacji):
             </h4>
@@ -77,24 +76,16 @@ const Theory = () => {
                 </ListItem>
               </ul>
             </div>
-          </div>
-          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:ml-3 lg:ml-6 xl:ml-12">
-            <img
-              className="w-full border border-stone-200"
-              src={Asset2}
-              alt="Skok ze spadochronem"
-            />
-          </div>
+          </FlexibleContainer>
+          <FlexibleContainer isRight>
+            <Image src={Asset2} alt="Skok ze spadochronem" />
+          </FlexibleContainer>
         </div>
         <div className="flex flex-col md:flex-row mb-16">
-          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:mr-3 lg:mr-6 xl:mr-12">
-            <img
-              className="w-full border border-stone-200"
-              src={Asset3}
-              alt="Widok ziemi z kosmosu"
-            />
-          </div>
-          <div className="font-display text-justify md:flex-1 md:basis-6/12 md:ml-3 lg:ml-6 xl:ml-12">
+          <FlexibleContainer>
+            <Image src={Asset3} alt="Widok ziemi z kosmosu" />
+          </FlexibleContainer>
+          <FlexibleContainer isRight>
             <h4 className="text-lg font-medium pb-2">
               Przyspieszenie ziemskie:
             </h4>
@@ -108,10 +99,10 @@ const Theory = () => {
                 matematycznego.
               </p>
             </div>
-          </div>
+          </FlexibleContainer>
         </div>
         <div className="flex flex-col-reverse md:flex-row mb-16">
-          <div className="font-display text-justify md:flex-1 md:basis-6/12 md:mr-3 lg:mr-6 xl:mr-12">
+          <FlexibleContainer>
             <h4 className="text-lg font-medium pb-2">Wahadło matematyczne:</h4>
             <div className="text-base	leading-7">
               <p>
@@ -152,14 +143,10 @@ const Theory = () => {
                 </ListItem>
               </ul>
             </div>
-          </div>
-          <div className="w-full md:flex-1 md:basis-6/12 mb-3 md:mb-0 md:ml-3 lg:ml-6 xl:ml-12">
-            <img
-              className="w-full border border-stone-200"
-              src={Asset4}
-              alt="Wahadło matematyczne"
-            />
-          </div>
+          </FlexibleContainer>
+          <FlexibleContainer isRight>
+            <Image src={Asset4} alt="Wahadło matematyczne" />
+          </FlexibleContainer>
         </div>
       </div>
     </section>

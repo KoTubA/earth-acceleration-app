@@ -40,7 +40,6 @@ const reducer = (state, action) => {
         },
       };
     case 'RESET_FORM':
-      console.log('Form reset!');
       return initialState;
 
     default:
@@ -82,7 +81,6 @@ const resultReducer = (state, action) => {
         conclusions: action.value,
       };
     case 'CALCULATE_RESULT':
-      console.log('Updated result');
       return {
         ...state,
         currentResult: {
@@ -91,14 +89,12 @@ const resultReducer = (state, action) => {
       };
 
     case 'UPDATE_RESULT':
-      console.log('Result update');
       return {
         ...state,
         history: state.history.filter((_, index) => index !== action.index),
       };
 
     case 'SAVE_RESULT':
-      console.log('Result saved');
       return {
         conclusions: state.conclusions,
         currentResult: initialResult,
@@ -106,7 +102,6 @@ const resultReducer = (state, action) => {
       };
 
     case 'EXPORT_TO_PDF':
-      console.log('Export to PDF clicked!');
       return {
         currentResult: initialResult,
         history: [],
