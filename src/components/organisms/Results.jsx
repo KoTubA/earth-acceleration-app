@@ -20,8 +20,7 @@ const inputFields = [
 
 const Results = () => {
   const {
-    inputValues,
-    resultState,
+    appState,
     handleInputChange,
     handlePeriodDataChange,
     handleCalculateResult,
@@ -41,8 +40,8 @@ const Results = () => {
             Tabela zapisanych wyników:
           </span>
           <div className="flex w-full gap-4 overflow-x-auto lg:flex-wrap pb-2">
-            {resultState.history.length > 0 ? (
-              resultState.history.map((result, index) => (
+            {appState.resultState.history.length > 0 ? (
+              appState.resultState.history.map((result, index) => (
                 <ResultCard
                   key={index}
                   result={result}
@@ -66,7 +65,7 @@ const Results = () => {
                 type="number"
                 id="lengthL"
                 name="lengthL"
-                value={inputValues.lengthL}
+                value={appState.inputValues.lengthL}
                 onChange={handleInputChange}
               />
               <InputField
@@ -74,7 +73,7 @@ const Results = () => {
                 type="number"
                 id="diameter"
                 name="diameter"
-                value={inputValues.diameter}
+                value={appState.inputValues.diameter}
                 onChange={handleInputChange}
               />
             </div>
@@ -96,7 +95,7 @@ const Results = () => {
                       type="number"
                       id={`${id}-${n}`}
                       name={`${n}`}
-                      value={inputValues[n][`${id}-${n}`]}
+                      value={appState.inputValues[n][`${id}-${n}`]}
                       onChange={handlePeriodDataChange}
                     />
                   ))}
@@ -139,7 +138,7 @@ const Results = () => {
                 type="number"
                 id="lengthLResult"
                 className="text-sm border border-gray-300 focus:outline-none focus:border-sky-500 w-full p-2.5 font-display"
-                value={resultState.currentResult.lengthLResult}
+                value={appState.resultState.currentResult.lengthLResult}
                 disabled
               />
             </div>
@@ -152,12 +151,12 @@ const Results = () => {
               <PeriodDataOutput
                 key={n}
                 title={`Dla ilości okresów n = ${n}`}
-                result={resultState.currentResult[n]}
+                result={appState.resultState.currentResult[n]}
               />
             ))}
             <PeriodDataOutput
               title="Średnia wyników"
-              result={resultState.currentResult.Avg}
+              result={appState.resultState.currentResult.Avg}
             />
           </div>
         </form>

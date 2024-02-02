@@ -23,30 +23,6 @@ const initialState = {
   50: { 'smallInput-50': '', 'mediumInput-50': '', 'largeInput-50': '' },
 };
 
-// Reducer for handling input value changes and form reset
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_INPUT_VALUE':
-      return {
-        ...state,
-        [action.field]: action.value,
-      };
-    case 'SET_PERIOD_DATA':
-      return {
-        ...state,
-        [action.n]: {
-          ...state[action.n],
-          [action.id]: action.value,
-        },
-      };
-    case 'RESET_FORM':
-      return initialState;
-
-    default:
-      return state;
-  }
-};
-
 // Initial state for result calculations
 const initialResult = {
   lengthLResult: '',
@@ -72,40 +48,70 @@ const initialResult = {
   },
 };
 
-// Reducer for handling result calculations and saving
-const resultReducer = (state, action) => {
+const rootReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_INPUT_VALUE':
+      return {
+        ...state,
+        inputValues: {
+          ...state.inputValues,
+          [action.field]: action.value,
+        },
+      };
+    case 'SET_PERIOD_DATA':
+      return {
+        ...state,
+        inputValues: {
+          ...state.inputValues,
+          [action.n]: {
+            ...state.inputValues[action.n],
+            [action.id]: action.value,
+          },
+        },
+      };
     case 'SET_CONCLUSIONS_VALUE':
       return {
         ...state,
-        conclusions: action.value,
+        conclusionsValues: action.value,
       };
     case 'CALCULATE_RESULT':
       return {
         ...state,
-        currentResult: {
+        resultState: {
+          ...state.resultState,
+          currentResult: {
           ...action.result,
+          },
         },
       };
-
     case 'UPDATE_RESULT':
       return {
         ...state,
-        history: state.history.filter((_, index) => index !== action.index),
+        resultState: {
+          ...state.resultState,
+          history: state.resultState.history.filter(
+            (_, index) => index !== action.index,
+          ),
+        },
       };
-
     case 'SAVE_RESULT':
       return {
-        conclusions: state.conclusions,
-        currentResult: initialResult,
-        history: [...state.history, state.currentResult],
+        ...state,
+        inputValues: initialState,
+        resultState: {
+          ...state.resultState,
+          currentResult: initialResult,
+          history: [...state.resultState.history, state.resultState.currentResult],
+        },
       };
-
     case 'EXPORT_TO_PDF':
       return {
-        currentResult: initialResult,
-        history: [],
-        conclusions: '',
+        inputValues: initialState,
+        resultState: {
+          currentResult: initialResult,
+          history: [],
+        },
+        conclusionsValues: '',
       };
 
     default:
@@ -114,8 +120,14 @@ const resultReducer = (state, action) => {
 };
 
 export const RaportContext = React.createContext({
-  inputValues: {},
-  resultState: {},
+  appState: {
+    inputValues: initialState,
+    resultState: {
+      currentResult: initialResult,
+      history: [],
+    },
+    conclusionsValues: ''
+  },
   handleInputChange: () => {},
   handlePeriodDataChange: () => {},
   handleCalculateResult: () => {},
@@ -128,11 +140,12 @@ export const RaportContext = React.createContext({
 });
 
 const RaportProvider = ({ children }) => {
-  const [inputValues, dispatchInput] = useReducer(reducer, initialState);
-  const [resultState, dispatchResult] = useReducer(resultReducer, {
-    currentResult: initialResult,
-    history: [],
-    conclusions: '',
+  const [appState, dispatch] = useReducer(rootReducer, {
+    inputValues: initialState,
+    resultState: {
+      currentResult: initialResult,
+      history: [],
+    },
   });
   const [error, setError] = useState(false);
   const [errormsg, setErrormsg] = useState('');
@@ -154,9 +167,15 @@ const RaportProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Event handler for input value changes
+  const disableError = () => {
+    clearTimeout(timer);
+    setError(false);
+    setErrormsg('');
+  }
+
+  // Event handler for input value changesc
   const handleInputChange = (e) => {
-    dispatchInput({
+    dispatch({
       type: 'SET_INPUT_VALUE',
       field: e.target.name,
       value: e.target.value,
@@ -165,7 +184,7 @@ const RaportProvider = ({ children }) => {
 
   // Event handler for period data changes
   const handlePeriodDataChange = (e) => {
-    dispatchInput({
+    dispatch({
       type: 'SET_PERIOD_DATA',
       n: e.target.name,
       id: e.target.id,
@@ -179,7 +198,7 @@ const RaportProvider = ({ children }) => {
 
   const handleCalculateResult = () => {
     // Check if any of the input values is empty
-    const isAnyInputEmpty = Object.values(inputValues).some((value) =>
+    const isAnyInputEmpty = Object.values(appState.inputValues).some((value) =>
       typeof value === 'object'
         ? Object.values(value).some((innerValue) => innerValue === '')
         : value === '',
@@ -194,7 +213,7 @@ const RaportProvider = ({ children }) => {
     }
 
     // Check if any of the input values is not a number
-    const isAnyInputNotNumber = Object.values(inputValues).some((value) =>
+    const isAnyInputNotNumber = Object.values(appState.inputValues).some((value) =>
       typeof value === 'object'
         ? Object.values(value).some((innerValue) =>
             isNaN(parseFloat(innerValue)),
@@ -210,7 +229,7 @@ const RaportProvider = ({ children }) => {
       return;
     }
 
-    const { lengthL, diameter, ...periods } = inputValues;
+    const { lengthL, diameter, ...periods } = appState.inputValues;
     const lengthLResult = calculateLengthWithBall(
       parseFloat(lengthL),
       parseFloat(diameter),
@@ -256,20 +275,20 @@ const RaportProvider = ({ children }) => {
           3,
       };
     });
-    dispatchResult({ type: 'CALCULATE_RESULT', result: calculatedResult });
+    dispatch({ type: 'CALCULATE_RESULT', result: calculatedResult });
   };
 
   // Event handler for saving the result
   const handleSaveResult = () => {
     // Check if the current result is equal to the initial result
     const isResultEqualInitial =
-      JSON.stringify(resultState.currentResult) ===
+      JSON.stringify(appState.resultState.currentResult) ===
       JSON.stringify(initialResult);
 
     // If the result is not equal to the initial result, proceed with saving
     if (!isResultEqualInitial) {
-      dispatchResult({ type: 'SAVE_RESULT' });
-      dispatchInput({ type: 'RESET_FORM' });
+      dispatch({ type: 'SAVE_RESULT' });
+      dispatch({ type: 'RESET_FORM' });
     } else {
       // Handle the case where the user tries to save without calculating first
       dispatchError('Nie można zapisać wyniku bez wcześniejszego obliczenia.');
@@ -278,29 +297,30 @@ const RaportProvider = ({ children }) => {
 
   // Event handler for deleting a result from history
   const handleDeleteResult = (index) => {
-    dispatchResult({ type: 'UPDATE_RESULT', index });
+    dispatch({ type: 'UPDATE_RESULT', index });
   };
 
   // Event handler for changing the 'conclusions' field
   const handleConclusionsChange = (e) => {
-    dispatchResult({ type: 'SET_CONCLUSIONS_VALUE', value: e.target.value });
+    dispatch({ type: 'SET_CONCLUSIONS_VALUE', value: e.target.value });
   };
 
   // Event handler for exporting to PDF
   const handleExportToPDF = async () => {
     // Check if there is at least one element in history and conclusions is not empty
     if (
-      resultState.history.length >= 1 &&
-      resultState.conclusions.trim() !== ''
+      appState.resultState.history.length >= 1 &&
+      appState.conclusionsValues.trim() !== ''
     ) {
       const blob = await pdf(
         <PDFTemplate
-          history={resultState.history}
-          conclusions={resultState.conclusions.trim()}
+          history={appState.resultState.history}
+          conclusions={appState.conclusionsValues.trim()}
         />,
       ).toBlob();
       saveAs(blob, 'sprawozdanie.pdf');
-      dispatchResult({ type: 'EXPORT_TO_PDF' });
+      dispatch({ type: 'EXPORT_TO_PDF' });
+      disableError();
     } else {
       dispatchError(
         'W celu exportu do pliku PDF, należy zapisać przynajmniej 1 wynik oraz uzupełnić wnioski.',
@@ -311,8 +331,7 @@ const RaportProvider = ({ children }) => {
   return (
     <RaportContext.Provider
       value={{
-        inputValues,
-        resultState,
+        appState,
         handleInputChange,
         handlePeriodDataChange,
         handleCalculateResult,
